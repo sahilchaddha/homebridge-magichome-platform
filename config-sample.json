@@ -1,0 +1,43 @@
+{
+    "platforms": [
+        {
+            "platform": "MagicHome-Platform",
+            "debug": true,
+            "lights": [
+                {
+                    "name": "Kitchen LED Strip",
+                    "ip": "192.168.1.111",
+                    "setup": "RGBWW",
+                    "purewhite": true,
+                    "timeout": 10000
+                },
+                {
+                    "name": "Living Room LED Strip",
+                    "ip": "192.168.1.112",
+                    "setup": "RGBWW",
+                    "purewhite": true
+                }
+            ],
+            "presetSwitches": [
+                {
+                    "name": "Kitchen Color Strobe Flash (Party)",
+                    "ips": {
+                        "192.168.1.111": "255,255,255"
+                    },
+                    "preset": "seven_color_strobe_flash",
+                    "speed": 60
+                },
+                {
+                    "name": "All Lights Cross Fade (Soothing)",
+                    "ips": {
+                        "192.168.1.111": "0,150,255",
+                        "192.168.1.112": "102,255,102"
+                    },
+                    "preset": "seven_color_cross_fade",
+                    "speed": 40,
+                    "shouldTurnOff": true
+                }
+            ]
+        }
+    ]
+}
