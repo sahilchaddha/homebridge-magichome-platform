@@ -37,7 +37,13 @@
                     "speed": 40,
                     "shouldTurnOff": true
                 }
-            ]
+            ],
+            "resetSwitch": {
+                "name": "Reset All Switches to Default",
+                "ips": {
+                        "192.168.1.111": "255,255,255"
+                    }
+            }
         }
     ]
 }

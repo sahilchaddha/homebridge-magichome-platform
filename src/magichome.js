@@ -1,6 +1,7 @@
 
 const LightBulb = require('./accessories/lightBulb')
 const PresetSwitch = require('./accessories/presetSwitch')
+const ResetSwitch = require('./accessories/resetSwitch')
 
 const pluginName = 'homebridge-magichome-platform'
 const platformName = 'MagicHome-Platform'
@@ -13,6 +14,7 @@ function MagicHome(log, config = {}) {
   this.config = config
   this.lights = []
   this.presetSwitches = []
+  this.resetSwitches = []
 }
 
 MagicHome.prototype = {
@@ -30,7 +32,12 @@ MagicHome.prototype = {
       })
     }
 
-    callback(this.lights.concat(this.presetSwitches))
+    if (this.config.resetSwitch != null) {
+      this.resetSwitches.push(new ResetSwitch(this.config.resetSwitch, this.log, homebridge))
+    }
+    const lightsSwitches = this.lights.concat(this.presetSwitches)
+    const allSwitches = lightsSwitches.concat(this.resetSwitches)
+    callback(allSwitches)
   },
 }
 

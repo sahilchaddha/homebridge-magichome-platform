@@ -1,8 +1,8 @@
 //
-//  clearDirSwitch.js
+//  presetSwitch.js
 //  Sahil Chaddha
 //
-//  Created by Sahil Chaddha on 26/08/2018.
+//  Created by Sahil Chaddha on 13/10/2018.
 //  Copyright © 2018 sahilchaddha.com. All rights reserved.
 //
 
@@ -87,7 +87,6 @@ const PresetSwitch = class extends Accessory {
             callback()
           }
         })
-
     }
   }
 
