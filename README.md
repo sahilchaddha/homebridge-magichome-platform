@@ -107,7 +107,7 @@ Any devices created by Zengge and running on the Magic Home Wi-Fi (or other apps
                     "name": "All Lights Cross Fade (Soothing)",
                     "ips": {
                         "192.168.1.111": "0,150,255",
-                        "192.168.1.112": "102, 255, 102"
+                        "192.168.1.112": "102,255,102"
                     },
                     "preset": "seven_color_cross_fade",
                     "speed": 40,
@@ -117,7 +117,7 @@ Any devices created by Zengge and running on the Magic Home Wi-Fi (or other apps
                     "name": "Jungle Mood (Soothing)",
                     "ips": {
                         "192.168.1.111": "0,150,255",
-                        "192.168.1.112": "102, 255, 102"
+                        "192.168.1.112": "102,255,102"
                     },
                     "preset": "green_gradual_change",
                     "speed": 40,
