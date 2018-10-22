@@ -15,7 +15,7 @@ const PresetSwitch = class extends Accessory {
     super(config, log, homebridge)
     this.isOn = false
     this.name = config.name || 'LED Controller Presets'
-    this.ips = Object.keys(config.ips).join(' ')
+    this.ips = Object.keys(config.ips)
     this.preset = config.preset || 'seven_color_cross_fade'
     this.sceneValue = preset[this.preset]
     if (this.sceneValue == null) {
@@ -47,7 +47,7 @@ const PresetSwitch = class extends Accessory {
   }
 
   sendCommand(command, callback) {
-    this.executeCommand(this.ips + ' ' + command, callback)
+    this.executeCommand(this.ips, command, callback)
   }
 
   switchStateChanged(newState, callback) {
@@ -68,7 +68,7 @@ const PresetSwitch = class extends Accessory {
       var promiseArray = []
       Object.keys(self.config.ips).forEach((ip) => {
         const newPromise = new Promise((resolve) => {
-          self.executeCommand(ip + ' -c ' + self.config.ips[ip], () => {
+          self.executeCommand(ip, ' -c ' + self.config.ips[ip], () => {
             resolve()
           })
         })

@@ -18,7 +18,7 @@ const LightBulb = class extends Accessory {
     this.color = { H: 255, S: 100, L: 50 }
     this.brightness = 100
     this.purewhite = config.purewhite || false
-    this.timeout = config.timeout || 5000
+    this.timeout = config.timeout || 15000
     this.getInitialColor()
     this.updateState()
   }
@@ -50,7 +50,7 @@ const LightBulb = class extends Accessory {
   }
 
   sendCommand(command, callback) {
-    this.executeCommand(this.ip + ' ' + command, callback)
+    this.executeCommand(this.ip, command, callback)
   }
 
   getModelName() {

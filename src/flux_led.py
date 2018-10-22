@@ -1228,7 +1228,7 @@ def main():
 		else:
 			print "{} bulbs found".format(len(bulb_info_list))
 			for b in bulb_info_list:
-				print "  {} {}".format(b['id'], b['ipaddr'])
+				print "{}={}".format(b['id'], b['ipaddr'])
 			sys.exit(0)
 
 	else:
