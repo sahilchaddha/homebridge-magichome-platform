@@ -30,7 +30,15 @@ const LightAgent = class {
     this.log('Getting Bulbs from Cache')
     return this.storage.getItem(cacheKey)
       .then((data) => {
-        const devices = this.parseDevices(data)
+        var devices = {}
+        if (data) {
+          try {
+            devices = JSON.parse(data)
+          } catch (error) {
+            devices = {}
+          }
+        }
+        this.log(' ** Fetched Lights from Cache **')
         this.log(devices)
         return devices
       })
@@ -38,10 +46,11 @@ const LightAgent = class {
 
   saveAddress(res) {
     if (this.storage) {
+      const data = JSON.stringify(res)
       this.log('Saving Lights')
-      this.log(res)
+      this.log(data)
 
-      this.storage.setItem(cacheKey, res)
+      this.storage.setItem(cacheKey, data)
         .then(() => {
           this.log('Lights Saved.')
         })
@@ -105,7 +114,8 @@ const LightAgent = class {
       Object.keys(devices).forEach((element) => {
         newDevices[element] = devices[element]
       })
-      this.saveAddress(res)
+      // Cache IPS
+      this.saveAddress(newDevices)
       return newDevices
     }
     return this.cachedAddress
