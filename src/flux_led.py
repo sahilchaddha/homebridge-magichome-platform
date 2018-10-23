@@ -781,7 +781,7 @@ class  BulbScanner():
 					item['id'] = data.split(',')[1]
 					item['model'] = data.split(',')[2]
 					response_list.append(item)
-
+					
 		self.found_bulbs = response_list
 		return response_list
 #=========================================================================
@@ -1218,7 +1218,7 @@ def main():
 
 	if options.scan:
 		scanner = BulbScanner()
-		scanner.scan(timeout=2)
+		scanner.scan(timeout=4)
 		bulb_info_list = scanner.getBulbInfo()
 		# we have a list of buld info dicts
 		addrs = []

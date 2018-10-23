@@ -17,6 +17,12 @@ function MagicHome(log, config = {}) {
   this.presetSwitches = []
   this.resetSwitches = []
   lightAgent.setLogger(log)
+  if (homebridge) {
+    lightAgent.setPersistPath(homebridge.PersistPath)
+  }
+  if (config && config.debug) {
+    lightAgent.setVerbose()
+  }
   lightAgent.startDiscovery()
 }
 
