@@ -55,7 +55,7 @@ Edit config.json. Refer to `config-sample.json`.
 
 ### Demo
 
-![Demo](https://raw.githubusercontent.com/sahilchaddha/homebridge-magichome-platform/master/demo.gif)
+![Demo](https://raw.githubusercontent.com/sahilchaddha/homebridge-magichome-platform/dev/demo.gif)
 
 ## Compatible Devices
 
