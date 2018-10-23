@@ -55,7 +55,7 @@ Edit config.json. Refer to `config-sample.json`.
 
 ### Demo
 
-![Demo](https://raw.githubusercontent.com/sahilchaddha/homebridge-magichome-platform/master/demo.gif)
+![Demo](https://raw.githubusercontent.com/sahilchaddha/homebridge-magichome-platform/dev/demo.gif)
 
 ## Compatible Devices
 
@@ -89,7 +89,7 @@ Any devices created by Zengge and running on the Magic Home Wi-Fi (or other apps
                 },
                 {
                     "name": "Living Room LED Strip",
-                    "ip": "192.168.1.112",
+                    "ip": "DC4F22C5XXXX",
                     "setup": "RGBWW",
                     "purewhite": true
                 }
@@ -107,7 +107,8 @@ Any devices created by Zengge and running on the Magic Home Wi-Fi (or other apps
                     "name": "All Lights Cross Fade (Soothing)",
                     "ips": {
                         "192.168.1.111": "0,150,255",
-                        "192.168.1.112": "102,255,102"
+                        "DC4F22C5XXXX": "102, 255, 102"
+
                     },
                     "preset": "seven_color_cross_fade",
                     "speed": 40,
@@ -117,7 +118,7 @@ Any devices created by Zengge and running on the Magic Home Wi-Fi (or other apps
                     "name": "Jungle Mood (Soothing)",
                     "ips": {
                         "192.168.1.111": "0,150,255",
-                        "192.168.1.112": "102,255,102"
+                        "DC4F22C5XXXX": "102, 255, 102"
                     },
                     "preset": "green_gradual_change",
                     "speed": 40,
@@ -130,8 +131,10 @@ Any devices created by Zengge and running on the Magic Home Wi-Fi (or other apps
 
 Preset Switch Configuration
 
-`ips` must be a key-value object where `key` is MagicHome LED IP Address e.g. `192.168.1.11` & `value` is default rgb color of the light. e.g. `"255,255,255" (White)`.
+`ips` must be a key-value object where `key` is MagicHome LED IP Address e.g. `192.168.1.11` or `DC4F22C5XXXX` MAC Address & `value` is default rgb color of the light. e.g. `"255,255,255" (White)`.
 Turning off Preset Pattern Switch , all lights will be reset to this color.
+
+You can use MAC Address instead of IP Address as well. Please note format of MAC Address. It should be in capital letters and `:` should not be present. e.g. `DC4F22C5XXXX`
 
 ## Lint
 

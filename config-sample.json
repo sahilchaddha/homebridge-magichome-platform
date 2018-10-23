@@ -6,7 +6,7 @@
             "lights": [
                 {
                     "name": "Kitchen LED Strip",
-                    "ip": "192.168.1.111",
+                    "ip": "DC4F22C5D4E1",
                     "setup": "RGBWW",
                     "purewhite": true,
                     "timeout": 10000
@@ -30,7 +30,7 @@
                 {
                     "name": "All Lights Cross Fade (Soothing)",
                     "ips": {
-                        "192.168.1.111": "0,150,255",
+                        "DC4F22C5D4E1": "0,150,255",
                         "192.168.1.112": "102,255,102"
                     },
                     "preset": "seven_color_cross_fade",

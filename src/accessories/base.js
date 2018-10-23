@@ -8,6 +8,7 @@
 
 const cp = require('child_process')
 const path = require('path')
+const lightAgent = require('../lib/lightAgent')
 
 const Accessory = class {
   constructor(config, log, homebridge) {
@@ -32,16 +33,15 @@ const Accessory = class {
     return informationService
   }
 
-  executeCommand(command, callback) {
+  executeCommand(address, command, callback) {
     const exec = cp.exec
     const self = this
-    const cmd = path.join(__dirname, '../flux_led.py ' + command)
+    const cmd = path.join(__dirname, '../flux_led.py ' + lightAgent.getAddress(address) + command)
     if (self.homebridge.debug) {
       self.log(cmd)
     }
     exec(cmd, (err, stdOut) => {
       if (self.homebridge.debug) {
-        self.log(err)
         self.log(stdOut)
       }
       if (callback) {

@@ -13,7 +13,7 @@ const ResetSwitch = class extends Accessory {
   constructor(config, log, homebridge) {
     super(config, log, homebridge)
     this.name = config.name || 'Reset LED Controller Presets'
-    this.ips = Object.keys(config.ips).join(' ')
+    this.ips = Object.keys(config.ips)
   }
 
   getAccessoryServices() {
@@ -26,7 +26,7 @@ const ResetSwitch = class extends Accessory {
   }
 
   sendCommand(command, callback) {
-    this.executeCommand(this.ips + ' ' + command, callback)
+    this.executeCommand(this.ips, command, callback)
   }
 
   switchStateChanged(newState, callback) {
@@ -35,7 +35,7 @@ const ResetSwitch = class extends Accessory {
     var promiseArray = []
     Object.keys(self.config.ips).forEach((ip) => {
       const newPromise = new Promise((resolve) => {
-        self.executeCommand(ip + ' -c ' + self.config.ips[ip], () => {
+        self.executeCommand(ip, ' -c ' + self.config.ips[ip], () => {
           resolve()
         })
       })
@@ -51,7 +51,7 @@ const ResetSwitch = class extends Accessory {
         }, 3000)
       })
       .then(() => {
-        self.setTimeout(() => {
+        setTimeout(() => {
           self.updateState()
         }, 2000)
       })
