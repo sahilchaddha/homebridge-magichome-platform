@@ -18,7 +18,7 @@ const LightBulb = class extends Accessory {
     this.color = { H: 255, S: 100, L: 50 }
     this.brightness = 100
     this.purewhite = config.purewhite || false
-    this.timeout = config.timeout || 15000
+    this.timeout = config.timeout || 5000
     this.getInitialColor()
     this.updateState()
   }
@@ -106,13 +106,13 @@ const LightBulb = class extends Accessory {
   }
 
   getPowerState(callback) {
-    this.getState((settings) => {
-      callback(null, settings.on)
-    })
+    callback(null, this.isOn)
   }
 
   setPowerState(value, callback) {
+    const self = this
     this.sendCommand(value ? '--on' : '--off', () => {
+      self.isOn = value
       callback()
     })
   }

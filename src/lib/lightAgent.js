@@ -76,7 +76,7 @@ const LightAgent = class {
     if (!this.storage) {
       this.storage = require('node-persist')
       const self = this
-      this.storage.init({ dir: persistPath, forgiveParseErrors: true, ttl: false, logging: false })
+      this.storage.init({ dir: path.join(persistPath, 'magichome-platform'), forgiveParseErrors: true, ttl: false, logging: false })
         .then(() => {
           return self.getCachedAddress()
         })

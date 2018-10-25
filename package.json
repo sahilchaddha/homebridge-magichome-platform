@@ -51,6 +51,6 @@
   "dependencies": {
     "babel-eslint": "^8.2.6",
     "color-convert": "^1.5.0",
-    "node-persist": "sahilchaddha/node-persist"
+    "node-persist": "^3.0.1"
   }
 }

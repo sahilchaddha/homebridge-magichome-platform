@@ -8,7 +8,7 @@ module.exports = (homebridge) => {
     Characteristic: homebridge.hap.Characteristic,
     Accessory: homebridge.platformAccessory,
     UUIDGen: homebridge.hap.uuid,
-    PersistPath: homebridge.user.persistPath(),
+    PersistPath: homebridge.user.storagePath(),
   }
   MagicHome.globals.setHomebridge(homebridgeGlobals)
   homebridge.registerPlatform(MagicHome.pluginName, MagicHome.platformName, MagicHome.platform, true)
