@@ -1,6 +1,6 @@
 {
   "name": "homebridge-magichome-platform",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Homebridge Plugin for MagicHome LED Strips with preset scenes",
   "main": "index.js",
   "preferGlobal": true,
