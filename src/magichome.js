@@ -42,7 +42,9 @@ MagicHome.prototype = {
     homebridge.debug = this.config.debug || false
     if (this.config.lights != null && this.config.lights.length > 0) {
       this.config.lights.forEach((lightConfig) => {
-        this.lights.push(new LightBulb(lightConfig, this.log, homebridge))
+        var newLightConfig = lightConfig
+        newLightConfig.debug = this.config.debug || false
+        this.lights.push(new LightBulb(newLightConfig, this.log, homebridge))
       })
     }
 
