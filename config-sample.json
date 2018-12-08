@@ -3,6 +3,7 @@
         {
             "platform": "MagicHome-Platform",
             "debug": true,
+            "disableDiscovery": false,
             "lights": [
                 {
                     "name": "Kitchen LED Strip",

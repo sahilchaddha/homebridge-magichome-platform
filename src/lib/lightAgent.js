@@ -21,6 +21,7 @@ const LightAgent = class {
     this.storage = null
     this.hasDiscoveryStarted = false
     this.isVerbose = false
+    this.shouldDiscover = true
   }
 
   getCachedAddress() {
@@ -57,8 +58,12 @@ const LightAgent = class {
     }
   }
 
+  disableDiscovery() {
+    this.shouldDiscover = false
+  }
+
   startDiscovery() {
-    if (!this.hasDiscoveryStarted) {
+    if (!this.hasDiscoveryStarted && this.shouldDiscover) {
       this.hasDiscoveryStarted = true
       this.getDevices()
     }
@@ -123,7 +128,7 @@ const LightAgent = class {
 
   getCachedDevice(addr) {
     var address = ''
-    if (this.cachedAddress[addr]) {
+    if (this.cachedAddress[addr] && this.shouldDiscover) {
       address = this.cachedAddress[addr]
     } else {
       address = addr
