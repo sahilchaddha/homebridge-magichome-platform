@@ -83,8 +83,8 @@ Any devices created by Zengge and running on the Magic Home Wi-Fi (or other apps
                 {
                     "name": "Kitchen LED Strip",
                     "ip": "192.168.1.111",
-                    "setup": "RGBWW",
-                    "purewhite": true,
+                    "setup": "RGBW",
+                    "purewhite": false,
                     "timeout": 10000
                 },
                 {
@@ -137,6 +137,11 @@ Turning off Preset Pattern Switch , all lights will be reset to this color.
 You can use MAC Address instead of IP Address as well. Please note format of MAC Address. It should be in capital letters and `:` should not be present. e.g. `DC4F22C5XXXX`
 
 Do note : While using MACS : This plugin auto discover connected lights on the network and map IP's to their corresponding MAC. Initially it can take time to discover all devices. All devices should be discovered and mapped in 60-120s. Once mapped IP & MACs are cached, and gets rediscovered every 30s to map new IP to the light. This feature is useful for people unable to assign Static IP to their lights.
+
+Default Discovery Interval => 5 Minutes
+Default Device Status Update Interval => 1 Minute
+
+Setting Device `timeout` to 0, will disable polling device for status update.
 
 ## Lint
 

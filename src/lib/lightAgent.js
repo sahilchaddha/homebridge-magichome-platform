@@ -16,7 +16,7 @@ const LightAgent = class {
 
   constructor() {
     this.cachedAddress = {}
-    this.pollingInterval = 15 * 1000
+    this.pollingInterval = 300 * 1000 // 5 Minutes
     this.logger = null
     this.storage = null
     this.hasDiscoveryStarted = false

@@ -17,9 +17,10 @@ const LightBulb = class extends Accessory {
     this.setup = config.setup || 'RGBW'
     this.color = { H: 0, S: 0, L: 100 }
     this.purewhite = config.purewhite || false
-    this.timeout = config.timeout || 5000
-    this.getInitialColor()
-    this.updateState()
+    this.timeout = config.timeout != null ? config.timeout : 60000
+    setTimeout(() => {
+      this.updateState()
+    }, 3000)
   }
 
   getAccessoryServices() {
@@ -60,40 +61,40 @@ const LightBulb = class extends Accessory {
     return '00-001-LightBulb'
   }
 
-  getInitialColor() {
-    const self = this
-    self.getState((settings) => {
-      self.color = settings.color
-    })
-  }
-
   logMessage(...args) {
     if (this.config.debug) {
       this.log(args)
     }
   }
 
+  startTimer() {
+    if (this.timeout === 0) return
+    setTimeout(() => {
+      this.updateState()
+    }, this.timeout)
+  }
+
   updateState() {
     const self = this
-    setInterval(() => {
-      self.getState((settings) => {
-        self.isOn = settings.on
-        self.color = settings.color
-        self.logMessage('Updating Device', self.ip, self.color, self.isOn)
-        self.services[0]
-          .getCharacteristic(this.homebridge.Characteristic.On)
-          .updateValue(self.isOn)
-        self.services[0]
-          .getCharacteristic(this.homebridge.Characteristic.Hue)
-          .updateValue(self.color.H)
-        self.services[0]
-          .getCharacteristic(this.homebridge.Characteristic.Saturation)
-          .updateValue(self.color.S)
-        self.services[0]
-          .getCharacteristic(this.homebridge.Characteristic.Brightness)
-          .updateValue(self.color.L)
-      })
-    }, self.timeout)
+    this.logMessage('Polling Light', this.ip)
+    self.getState((settings) => {
+      self.isOn = settings.on
+      self.color = settings.color
+      self.logMessage('Updating Device', self.ip, self.color, self.isOn)
+      self.services[0]
+        .getCharacteristic(this.homebridge.Characteristic.On)
+        .updateValue(self.isOn)
+      self.services[0]
+        .getCharacteristic(this.homebridge.Characteristic.Hue)
+        .updateValue(self.color.H)
+      self.services[0]
+        .getCharacteristic(this.homebridge.Characteristic.Saturation)
+        .updateValue(self.color.S)
+      self.services[0]
+        .getCharacteristic(this.homebridge.Characteristic.Brightness)
+        .updateValue(self.color.L)
+      this.startTimer()
+    })
   }
 
   getState(callback) {

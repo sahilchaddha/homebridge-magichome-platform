@@ -8,15 +8,16 @@
                 {
                     "name": "Kitchen LED Strip",
                     "ip": "DC4F22C5D4E1",
-                    "setup": "RGBWW",
-                    "purewhite": true,
+                    "setup": "RGBW",
+                    "purewhite": false,
                     "timeout": 10000
                 },
                 {
                     "name": "Living Room LED Strip",
                     "ip": "192.168.1.112",
                     "setup": "RGBWW",
-                    "purewhite": true
+                    "purewhite": true,
+                    "timeout": 0
                 }
             ],
             "presetSwitches": [
