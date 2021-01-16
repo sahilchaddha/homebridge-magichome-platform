@@ -6,6 +6,17 @@
 //  Copyright © 2018 sahilchaddha.com. All rights reserved.
 //
 
+function debounce (fn, wait) {
+  var timeout
+  return function () {
+    clearTimeout(timeout)
+    var args = arguments
+    timeout = setTimeout(function () {
+      fn.apply(this, args)
+    }, (wait || 1))
+  }
+}
+
 const convert = require('color-convert')
 const Accessory = require('./base')
 
@@ -147,7 +158,7 @@ const LightBulb = class extends Accessory {
 
   setHue(value, callback) {
     this.color.H = value
-    this.setToCurrentColor()
+    this.debouncedSetToCurrentColor()
     callback()
   }
 
@@ -157,7 +168,7 @@ const LightBulb = class extends Accessory {
 
   setBrightness(value, callback) {
     this.color.L = value
-    this.setToCurrentColor()
+    this.debouncedSetToCurrentColor()
     callback()
   }
 
@@ -167,7 +178,7 @@ const LightBulb = class extends Accessory {
 
   setSaturation(value, callback) {
     this.color.S = value
-    this.setToCurrentColor()
+    this.debouncedSetToCurrentColor()
     callback()
   }
 
@@ -187,6 +198,8 @@ const LightBulb = class extends Accessory {
     var base = '-x ' + this.setup + ' -c '
     this.sendCommand(base + converted[0] + ',' + converted[1] + ',' + converted[2])
   }
+
+  debouncedSetToCurrentColor = debounce(this.setToCurrentColor.bind(this), 250)
 }
 
 module.exports = LightBulb
