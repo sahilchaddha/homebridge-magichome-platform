@@ -40,7 +40,7 @@ const Accessory = class {
     if (self.homebridge.debug) {
       self.log(cmd)
     }
-    exec(cmd, (err, stdOut) => {
+    exec(cmd, { timeout: 60000 }, (err, stdOut) => {
       if (self.homebridge.debug) {
         self.log(stdOut)
       }
